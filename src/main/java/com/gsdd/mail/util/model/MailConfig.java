@@ -9,8 +9,8 @@ import lombok.Setter;
 
 /**
  * @author Great System Development Dynamic (<b>GSDD</b>) <br>
- *         Alexander Galvis Grisales <br>
- *         alex.galvis.sistemas@gmail.com <br>
+ *     Alexander Galvis Grisales <br>
+ *     alex.galvis.sistemas@gmail.com <br>
  */
 @Getter
 @Setter
@@ -29,5 +29,4 @@ public class MailConfig implements Serializable {
   private Properties prop;
   private Session mailSession;
   private Transport tr;
-
 }

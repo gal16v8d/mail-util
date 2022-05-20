@@ -4,10 +4,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 /**
- * 
  * @author Great System Development Dynamic (<b>GSDD</b>) <br>
- *         Alexander Galvis Grisales <br>
- *         alex.galvis.sistemas@gmail.com <br>
+ *     Alexander Galvis Grisales <br>
+ *     alex.galvis.sistemas@gmail.com <br>
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class MailConstants {
@@ -33,9 +32,7 @@ public final class MailConstants {
   public static final String MAIL_IMG_ID = "image";
   public static final String MAIL_HTML_ITAG = "<img src=\"cid:";
   public static final String MAIL_HTML_FTAG = "\">";
-  /**
-   * Define tipo de codificacion de imagen para procesar el mail.
-   */
+  /** Define tipo de codificacion de imagen para procesar el mail. */
   public static final String MAIL_IMG_COD = "text/html";
 
   // possible properties for mail send
@@ -53,5 +50,4 @@ public final class MailConstants {
   public static final String MAIL_FLAG = "mail.flag";
   public static final String MAIL_TLS = "TLS";
   public static final String MAIL_SSL = "SSL";
-
 }

@@ -1,5 +1,9 @@
 package com.gsdd.mail.util.ut;
 
+import com.gsdd.constants.MailConstants;
+import com.gsdd.mail.util.MailUtil;
+import com.gsdd.mail.util.model.MailBody;
+import com.gsdd.mail.util.model.MailConfig;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -12,26 +16,22 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import com.gsdd.constants.MailConstants;
-import com.gsdd.mail.util.MailUtil;
-import com.gsdd.mail.util.model.MailBody;
-import com.gsdd.mail.util.model.MailConfig;
 
 class MailUtilTest {
 
   @ParameterizedTest(name = "for email={0} validation should be true")
   @ValueSource(strings = {"im.a.test@gmail.com", "john.doe@gmail.com"})
   void validateMailAddressTrueTest(String email) {
-    Assertions
-        .assertTrue(new MailUtil(new MailBody(), new MailConfig()).validateMailAddress(email));
+    Assertions.assertTrue(
+        new MailUtil(new MailBody(), new MailConfig()).validateMailAddress(email));
   }
 
   @ParameterizedTest(name = "for email={0} validation should be false")
   @NullAndEmptySource
   @ValueSource(strings = {"test@test@", "@gmail.com"})
   void validateMailAddressFalseTest(String email) {
-    Assertions
-        .assertFalse(new MailUtil(new MailBody(), new MailConfig()).validateMailAddress(email));
+    Assertions.assertFalse(
+        new MailUtil(new MailBody(), new MailConfig()).validateMailAddress(email));
   }
 
   @ParameterizedTest(name = "for type={0} RecipientType should be {1}")
@@ -44,7 +44,8 @@ class MailUtilTest {
   }
 
   private static Stream<Arguments> getRecipientTypeArgs() {
-    return Stream.of(Arguments.of(null, RecipientType.TO),
+    return Stream.of(
+        Arguments.of(null, RecipientType.TO),
         Arguments.of(MailConstants.MAIL_RT_CC, RecipientType.CC),
         Arguments.of(MailConstants.MAIL_RT_BCC, RecipientType.BCC));
   }
@@ -64,5 +65,4 @@ class MailUtilTest {
         new MailUtil(new MailBody(), new MailConfig()).checkAndPrepareRecipients(null);
     Assertions.assertEquals(0, validAddress.size());
   }
-
 }

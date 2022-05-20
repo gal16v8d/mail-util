@@ -1,13 +1,13 @@
 package com.gsdd.mail.util.it;
 
+import com.gsdd.mail.util.MailUtil;
+import com.gsdd.mail.util.model.MailBody;
+import com.gsdd.mail.util.model.MailConfig;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.gsdd.mail.util.MailUtil;
-import com.gsdd.mail.util.model.MailBody;
-import com.gsdd.mail.util.model.MailConfig;
 
 class MailUtilIT {
 
@@ -15,10 +15,12 @@ class MailUtilIT {
   private static final String MEME_JPG = "meme.jpg";
   private static final String LOG4J2_XML = "log4j2.xml";
   private static final List<String> RECIPIENTS = new ArrayList<>();
+
   static {
     RECIPIENTS.add(System.getenv("RECIPIENT_1"));
     RECIPIENTS.add(System.getenv("RECIPIENT_2"));
   }
+
   private static final String TEST_MSG = "Test mail-util";
   private static final String HOST_NAME = "smtp.gmail.com";
   private static final String STRING_TRUE = "true";
@@ -27,8 +29,9 @@ class MailUtilIT {
   void testMailSSLSend() {
     File meme = new File(getClass().getClassLoader().getResource(MEME_JPG).getFile());
     File attachment = new File(getClass().getClassLoader().getResource(LOG4J2_XML).getFile());
-    MailUtil testMU = new MailUtil(
-        createMailBody(meme.getAbsolutePath(), attachment.getAbsolutePath()), sslMailConfig());
+    MailUtil testMU =
+        new MailUtil(
+            createMailBody(meme.getAbsolutePath(), attachment.getAbsolutePath()), sslMailConfig());
     Assertions.assertTrue(testMU.sendMail());
   }
 
@@ -77,5 +80,4 @@ class MailUtilIT {
     inputMS.setFlag(true);
     return inputMS;
   }
-
 }

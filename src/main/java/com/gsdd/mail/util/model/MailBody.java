@@ -6,10 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 
  * @author Great System Development Dynamic (<b>GSDD</b>) <br>
- *         Alexander Galvis Grisales <br>
- *         alex.galvis.sistemas@gmail.com <br>
+ *     Alexander Galvis Grisales <br>
+ *     alex.galvis.sistemas@gmail.com <br>
  */
 @Getter
 @Setter
@@ -23,5 +22,4 @@ public class MailBody implements Serializable {
   private String image;
   private String message;
   private String subject;
-
 }

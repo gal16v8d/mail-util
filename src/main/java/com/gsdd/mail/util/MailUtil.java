@@ -1,5 +1,13 @@
 package com.gsdd.mail.util;
 
+import com.gsdd.constants.MailConstants;
+import com.gsdd.constants.RegexConstants;
+import com.gsdd.cypher.CypherAlgorithm;
+import com.gsdd.cypher.CypherUtil;
+import com.gsdd.cypher.DigestAlgorithm;
+import com.gsdd.exception.TechnicalException;
+import com.gsdd.mail.util.model.MailBody;
+import com.gsdd.mail.util.model.MailConfig;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,23 +28,14 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import com.gsdd.constants.MailConstants;
-import com.gsdd.constants.RegexConstants;
-import com.gsdd.cypher.CypherAlgorithm;
-import com.gsdd.cypher.CypherUtil;
-import com.gsdd.cypher.DigestAlgorithm;
-import com.gsdd.exception.TechnicalException;
-import com.gsdd.mail.util.model.MailBody;
-import com.gsdd.mail.util.model.MailConfig;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 
  * @author Great System Development Dynamic (<b>GSDD</b>) <br>
- *         Alexander Galvis Grisales <br>
- *         alex.galvis.sistemas@gmail.com <br>
+ *     Alexander Galvis Grisales <br>
+ *     alex.galvis.sistemas@gmail.com <br>
  */
 @AllArgsConstructor
 @Getter
@@ -86,10 +85,12 @@ public class MailUtil {
   private void initTransport() {
     try {
       if (this.configs.getTr() == null || !this.configs.getTr().isConnected()) {
+        this.configs.setTr(
+            this.configs.getMailSession().getTransport(MailConstants.MAIL_PROP_TRANSPORT));
         this.configs
-            .setTr(this.configs.getMailSession().getTransport(MailConstants.MAIL_PROP_TRANSPORT));
-        this.configs.getTr().connect(decodeValue(this.body.getMailSender()),
-            decodeValue(this.body.getPassSender()));
+            .getTr()
+            .connect(
+                decodeValue(this.body.getMailSender()), decodeValue(this.body.getPassSender()));
       }
     } catch (Exception e) {
       throw new TechnicalException(e);
@@ -121,10 +122,13 @@ public class MailUtil {
   }
 
   public boolean validateMailAddress(String email) {
-    return Optional.ofNullable(email).map((String input) -> {
-      Matcher matcher = MAIL_PATTERN.matcher(email);
-      return matcher.matches();
-    }).orElse(false);
+    return Optional.ofNullable(email)
+        .map(
+            (String input) -> {
+              Matcher matcher = MAIL_PATTERN.matcher(email);
+              return matcher.matches();
+            })
+        .orElse(false);
   }
 
   public List<InternetAddress> checkAndPrepareRecipients(List<String> recipients) {
@@ -158,7 +162,11 @@ public class MailUtil {
           message.setSubject(this.body.getSubject(), this.getConfigs().getEncoding());
           MimeMultipart mp = new MimeMultipart();
           attachImage(message, mp, this.body.getImage());
-          attachFile(message, mp, this.body.getAttachments(), this.body.getMessage(),
+          attachFile(
+              message,
+              mp,
+              this.body.getAttachments(),
+              this.body.getMessage(),
               this.configs.getEncoding());
           if (!this.configs.getTr().isConnected()) {
             initTransport();
@@ -196,8 +204,11 @@ public class MailUtil {
         mp.addBodyPart(messageBodyPart);
         messageBodyPart = new MimeBodyPart();
         messageBodyPart.setDataHandler(new DataHandler(source));
-        messageBodyPart.setHeader(MailConstants.MAIL_HEADER, MailConstants.MAIL_HTML_MAYOR
-            + MailConstants.MAIL_IMG_ID + MailConstants.MAIL_HTML_MENOR);
+        messageBodyPart.setHeader(
+            MailConstants.MAIL_HEADER,
+            MailConstants.MAIL_HTML_MAYOR
+                + MailConstants.MAIL_IMG_ID
+                + MailConstants.MAIL_HTML_MENOR);
         mp.addBodyPart(messageBodyPart);
         message.setContent(mp);
       }
@@ -207,8 +218,12 @@ public class MailUtil {
     }
   }
 
-  public MimeMessage attachFile(MimeMessage mimeMessage, MimeMultipart mp, String[] attachments,
-      String textMessage, String encoding) {
+  public MimeMessage attachFile(
+      MimeMessage mimeMessage,
+      MimeMultipart mp,
+      String[] attachments,
+      String textMessage,
+      String encoding) {
     try {
       if (attachments != null) {
         BodyPart messageBodyPart = new MimeBodyPart();
@@ -232,5 +247,4 @@ public class MailUtil {
       throw new TechnicalException(e);
     }
   }
-
 }
