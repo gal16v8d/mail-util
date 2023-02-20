@@ -27,7 +27,7 @@
 		<mail.version>1.6.2</mail.version>
 		<constant-util.version>2.0.3</constant-util.version>
 		<exception-util.version>2.0.3</exception-util.version>
-		<cypher-util.version>2.0.2</cypher-util.version>
+		<cypher-util.version>2.0.3</cypher-util.version>
 	</properties>
 
 	<dependencies>
