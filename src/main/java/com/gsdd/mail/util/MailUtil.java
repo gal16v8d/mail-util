@@ -1,10 +1,10 @@
 package com.gsdd.mail.util;
 
+import com.gsdd.cipher.CipherAlgorithm;
+import com.gsdd.cipher.CipherUtil;
+import com.gsdd.cipher.DigestAlgorithm;
 import com.gsdd.constants.MailConstants;
 import com.gsdd.constants.RegexConstants;
-import com.gsdd.cypher.CypherAlgorithm;
-import com.gsdd.cypher.CypherUtil;
-import com.gsdd.cypher.DigestAlgorithm;
 import com.gsdd.exception.TechnicalException;
 import com.gsdd.mail.util.model.MailBody;
 import com.gsdd.mail.util.model.MailConfig;
@@ -98,7 +98,7 @@ public class MailUtil {
   }
 
   private String decodeValue(String data) {
-    return CypherUtil.decode(data, null, DigestAlgorithm.SHA512, CypherAlgorithm.DESEDE);
+    return CipherUtil.decode(data, null, DigestAlgorithm.SHA512, CipherAlgorithm.DESEDE);
   }
 
   private void initMail() {
