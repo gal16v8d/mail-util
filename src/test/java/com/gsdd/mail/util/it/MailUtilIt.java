@@ -1,5 +1,6 @@
 package com.gsdd.mail.util.it;
 
+import com.gsdd.constants.MailConstants;
 import com.gsdd.mail.util.MailUtil;
 import com.gsdd.mail.util.model.MailBody;
 import com.gsdd.mail.util.model.MailConfig;
@@ -9,7 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class MailUtilIT {
+class MailUtilIt {
 
   private static final String UTF_8 = "UTF-8";
   private static final String MEME_JPG = "meme.jpg";
@@ -56,7 +57,7 @@ class MailUtilIT {
   private MailConfig sslMailConfig() {
     MailConfig inputMS = new MailConfig();
     inputMS.setHost(HOST_NAME);
-    inputMS.setSendType("SSL");
+    inputMS.setSendType(MailConstants.MAIL_SSL);
     inputMS.setConnection("javax.net.ssl.SSLSocketFactory");
     inputMS.setAuth(STRING_TRUE);
     inputMS.setType("BCC");
@@ -70,7 +71,7 @@ class MailUtilIT {
   private MailConfig tlsMailConfig() {
     MailConfig inputMS = new MailConfig();
     inputMS.setHost(HOST_NAME);
-    inputMS.setSendType("TLS");
+    inputMS.setSendType(MailConstants.MAIL_TLS);
     inputMS.setConnection(STRING_TRUE);
     inputMS.setAuth(STRING_TRUE);
     inputMS.setType("CC");

@@ -1,22 +1,27 @@
 package com.gsdd.mail.util.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Properties;
 import javax.mail.Session;
 import javax.mail.Transport;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Great System Development Dynamic (<b>GSDD</b>) <br>
  *     Alexander Galvis Grisales <br>
  *     alex.galvis.sistemas@gmail.com <br>
  */
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MailConfig implements Serializable {
 
-  private static final long serialVersionUID = 7861857655738866455L;
+  @Serial private static final long serialVersionUID = 7861857655738866455L;
   private String host;
   private String port;
   private String type;

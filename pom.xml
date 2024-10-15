@@ -2,15 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>com.gsdd</groupId>
 		<artifactId>gsdd-parent</artifactId>
-		<version>1.0.3</version>
+		<version>1.0.4</version>
 	</parent>
 
 	<artifactId>mail-util</artifactId>
-	<version>2.1.0</version>
+	<version>2.1.1</version>
 	<packaging>jar</packaging>
 
 	<name>mail-util</name>
@@ -25,9 +25,9 @@
 		<skip.integration.tests>false</skip.integration.tests>
 
 		<mail.version>1.6.2</mail.version>
-		<constant-util.version>2.1.0</constant-util.version>
-		<exception-util.version>2.1.0</exception-util.version>
-		<cipher-util.version>2.1.0</cipher-util.version>
+		<constant-util.version>2.1.1</constant-util.version>
+		<exception-util.version>2.1.1</exception-util.version>
+		<cipher-util.version>2.1.1</cipher-util.version>
 	</properties>
 
 	<dependencies>
@@ -240,7 +240,7 @@
 					<!-- define a language-specific format -->
 					<java>
 						<googleJavaFormat>
-							<version>1.15.0</version>
+							<version>1.17.0</version>
 							<reflowLongStrings>true</reflowLongStrings>
 						</googleJavaFormat>
 						<trimTrailingWhitespace />

@@ -1,14 +1,13 @@
 package com.gsdd.constants;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 /**
  * @author Great System Development Dynamic (<b>GSDD</b>) <br>
  *     Alexander Galvis Grisales <br>
  *     alex.galvis.sistemas@gmail.com <br>
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public final class MailConstants {
 
   public static final String MAIL_PROP_TRANSPORT = "smtp";
@@ -32,6 +31,7 @@ public final class MailConstants {
   public static final String MAIL_IMG_ID = "image";
   public static final String MAIL_HTML_ITAG = "<img src=\"cid:";
   public static final String MAIL_HTML_FTAG = "\">";
+
   /** Define tipo de codificacion de imagen para procesar el mail. */
   public static final String MAIL_IMG_COD = "text/html";
 
