@@ -98,7 +98,7 @@ public class MailUtil {
   }
 
   private String decodeValue(String data) {
-    return CipherUtil.decode(data, null, DigestAlgorithm.SHA512, CipherAlgorithm.DESEDE);
+    return CipherUtil.decode(data, null, DigestAlgorithm.SHA512, CipherAlgorithm.DES_EDE);
   }
 
   private void initMail() {
@@ -208,7 +208,7 @@ public class MailUtil {
             MailConstants.MAIL_HEADER,
             MailConstants.MAIL_HTML_MAYOR
                 + MailConstants.MAIL_IMG_ID
-                + MailConstants.MAIL_HTML_MENOR);
+                + MailConstants.MAIL_HTML_MINOR);
         mp.addBodyPart(messageBodyPart);
         message.setContent(mp);
       }

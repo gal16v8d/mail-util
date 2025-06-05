@@ -27,12 +27,12 @@ public final class MailConstants {
   public static final String MAIL_HEADER = "Content-ID";
   // id for attached image
   public static final String MAIL_HTML_MAYOR = "<";
-  public static final String MAIL_HTML_MENOR = ">";
+  public static final String MAIL_HTML_MINOR = ">";
   public static final String MAIL_IMG_ID = "image";
   public static final String MAIL_HTML_ITAG = "<img src=\"cid:";
   public static final String MAIL_HTML_FTAG = "\">";
 
-  /** Define tipo de codificacion de imagen para procesar el mail. */
+  /** Encoding type for image to process mail. */
   public static final String MAIL_IMG_COD = "text/html";
 
   // possible properties for mail send

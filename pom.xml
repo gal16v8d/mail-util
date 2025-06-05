@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>com.gsdd</groupId>
 		<artifactId>gsdd-parent</artifactId>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 	</parent>
 
 	<artifactId>mail-util</artifactId>
-	<version>2.1.1</version>
+	<version>2.1.2</version>
 	<packaging>jar</packaging>
 
 	<name>mail-util</name>
@@ -24,10 +24,11 @@
 		<!-- If true skips IT test execution -->
 		<skip.integration.tests>false</skip.integration.tests>
 
-		<mail.version>1.6.2</mail.version>
-		<constant-util.version>2.1.1</constant-util.version>
-		<exception-util.version>2.1.1</exception-util.version>
-		<cipher-util.version>2.1.1</cipher-util.version>
+		<!-- TODO: check to move to eclipse angus (https://jakartaee.github.io/mail-api/) -->
+		<mail.version>1.6.7</mail.version>
+		<constant-util.version>2.1.2</constant-util.version>
+		<exception-util.version>2.1.2</exception-util.version>
+		<cipher-util.version>2.1.2</cipher-util.version>
 	</properties>
 
 	<dependencies>
@@ -74,7 +75,7 @@
 
 		<dependency>
 			<groupId>com.sun.mail</groupId>
-    		<artifactId>javax.mail</artifactId>
+    		<artifactId>jakarta.mail</artifactId>
 			<version>${mail.version}</version>
 		</dependency>
 
